@@ -1,2 +1,5 @@
-# kquizz.com
-This code will be sync'd over to s3. and should eventually be what's up on kquizz.com
+# Kquizz.com
+
+This is my digital portfolio!
+
+Mostly just random rails apps, and probably some p5 sketches.
