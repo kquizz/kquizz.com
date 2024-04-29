@@ -1,59 +1,78 @@
+class Text {
+  constructor(x, y, vel, text, colorController) {
+    this.x = x;
+    this.y = y;
+    this.x_vel = vel;
+    this.y_vel = vel;
+    this.text = text;
+    this.colorController = colorController
+  }
+
+  progress() {
+    this.x = this.x + this.x_vel;
+    this.y = this.y + this.y_vel;
+
+    if (this.y >= height - 4 || this.y <= 24) {
+      this.colorController.nextColor();
+      this.y_vel = -1 * this.y_vel;
+    }
+    if (this.x >= width - 91 || this.x <= 0) {
+      this.colorController.nextColor();
+      this.x_vel = -1 * this.x_vel;
+    }
+  }
+}
+
+class ColorController {
+  constructor(colorList) {
+    this.functions = colorList.map(function (color) { return function () { fill(color[0], color[1], color[2]); } });
+    this.counter = 0;
+  }
+
+  setColor() {
+    this.functions[this.counter]();
+  }
+  nextColor() {
+    this.incCounter();
+    this.setColor();
+  }
+
+  incCounter() {
+    this.counter = this.counter + 1
+    if (this.counter >= this.functions.length) {
+      this.counter = 0
+    }
+  }
+}
+
+let myText;
+
 function setup() {
   x_max = windowWidth * .95 * .66;
   y_max = windowHeight * .95 * .66;
 
   createCanvas(x_max, y_max);
 
-  x = 50;
-  y = 50;
-  vel = 2
+  let colorController = new ColorController([
+    [255, 255, 255],
+    [255, 255, 0],
+    [255, 0, 255],
+    [255, 0, 0],
+    [0, 255, 255],
+    [0, 255, 0],
+    [0, 0, 255]]);
 
-  x_vel = vel;
-  y_vel = vel;
+  myText = new Text(50, 50, 2, "kquizz", colorController);
 
-  counter = 0
-  color_functions = [
-    function () { fill(255, 255, 255); },
-    function () { fill(255, 255, 0); },
-    function () { fill(255, 0, 255); },
-    function () { fill(255, 0, 0); },
-    function () { fill(0, 255, 255); },
-    function () { fill(0, 255, 0); },
-    function () { fill(0, 0, 255); }
-  ];
-
-  color_functions[0]();
+  myText.colorController.setColor();
 }
 
 function draw() {
   background(0);
   textSize(32);
-  text('kquizz', x, y);
+  text(myText.text, myText.x, myText.y);
 
-  progress();
-}
-
-function progress() {
-  x = x + x_vel;
-  y = y + y_vel;
-
-  if (y >= height - 4 || y <= 24) {
-    next_color();
-    y_vel = -1 * y_vel;
-  }
-  if (x >= width - 91 || x <= 0) {
-    next_color();
-    x_vel = -1 * x_vel;
-  }
-}
-
-
-function next_color() {
-  counter = counter + 1
-  if (counter >= color_functions.length) {
-    counter = 0
-  }
-  color_functions[counter]();
+  myText.progress();
 }
 
 function windowResized() {
