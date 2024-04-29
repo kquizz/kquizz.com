@@ -98,8 +98,8 @@ function setup() {
   scoreElem.id = 'score';
   scoreElem.style('color', 'white');
 
-  x_max = windowWidth * .95 * .66;
-  y_max = windowHeight * .95 * .66;
+  x_max = windowWidth * .85;
+  y_max = windowHeight * .75;
 
   createCanvas(x_max, y_max);
   frameRate(15);

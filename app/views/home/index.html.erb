@@ -2,60 +2,31 @@
 <html>
 <head>
   <title>Kquizz Portfolio</title>
-  <style>
-    /* Need to put these into a CSS file */
-    .navbar {
-      float: right;
-      margin-right: 20px;
-    }
-    .navbar ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar li {
-      display: inline;
-      margin-right: 10px;
-    }
-    .flex-container {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-    }
-
-    .centered-text {
-      text-align: center;
-    }
-
-
-    #kquizz_bounce, .navbar {
-      flex: 1;
-    }
-  </style>
   <%= javascript_include_tag 'p5/p5' %>
 </head>
 <body>
-  <h1 class="centered-text">Welcome to Kquizz's Portfolio</h1>
-  <p class="centered-text">This is Kquizz's portfolio page where you can find information about their projects.</p>
-  
-  <div class="flex-container">
-    <main id="kquizz_bounce">
-      <%= javascript_include_tag 'p5/kquizz_bounce' %>
-    </main>
-    <div class="navbar centered-text">
-      <h2> Pages to check out</h2>
-    <ul>
-        <li><a href="#">Fantasy League Manager</a></li>
-      </ul>
-      <br>
-      <ul>
-        <li><a href="#">Notes</a></li>
-      </ul>
-      <br>
-      <ul>
-        <li>
-        <%= link_to 'p5', p5_path %>
-      </ul>
+  <section class="section">
+    <div class="container">
+      <h1 class="title has-text-centered">Welcome to Kquizz's Portfolio</h1>
+      <p class="subtitle has-text-centered">This is Kquizz's portfolio page where you can find information about their projects.</p>
+    </div>
+  </section>
+
+  <div class="columns">
+    <div class="column">
+      <main id="kquizz_bounce">
+        <%= javascript_include_tag 'p5/kquizz_bounce' %>
+      </main>
+    </div>
+    <div class="column">
+      <div class="box">
+        <h2 class="title is-4">Pages to check out</h2>
+        <ul>
+          <li>
+            <%= link_to 'P5 Sketches', p5_path %>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </body>

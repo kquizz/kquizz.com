@@ -2,44 +2,35 @@
 <html>
   <head>
     <%= javascript_include_tag 'p5/p5' %>
-    <style>
-    .p5-file {
-      color: blue;
-      margin-right: 10px;
-    }
-
-    .p5-file.active {
-      color: red;
-    }
-
-    .flex-container {
-      display: flex;
-      flex-direction: row;
-    }
-
-    @media screen and (max-width: 600px) {
-      .flex-container {
-      flex-direction: column;
-    }
-}
-
-    .flex-item {
-      margin-right: 10px;
-    }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
   </head>
   <body>
-    <div class="flex-container">
-      <main class="flex-item" style="width: 95%">
-        <%= javascript_include_tag "p5/#{@p5_file}" %>
-        </main>
-      <div class="flex-item">
-        <% @p5_files.each do |file| %>
-          <%= link_to file, { action: 'update', file: file }, id: file, class: "p5-file #{'active' if file == @p5_file}", remote: true %>
-        <% end %>
-        <pre><%= @p5_file_content %></pre>
-      
+    <section class="section pb-0">
+      <div class="container">
+        <h1 class="title has-text-centered">p5 Sketches</h1>
+        <p class="subtitle has-text-centered">p5 is a Javascript adaptation of the Processing language.  It's great for just quick little graphics or 2d games.</p>
+      </div>
+    </section>
+    <section class="section pt-4">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column">
+              <div class="p5-file has-text-info is-flex justify-content-center align-items-center">
+              <main class="flex-item is-flex justify-content-center align-items-center">
+                <%= javascript_include_tag "p5/#{@p5_file}" %>
+                </main>
+            </div>
+          </div>
+          <div class="column">
+            <div class="p5-file active has-text-danger">
+              <% @p5_files.each do |file| %>
+                <%= link_to file, { action: 'update', file: file }, id: file, class: "p5-file #{'active' if file == @p5_file} m-3", remote: true %>
+              <% end %>
+              <pre><%= @p5_file_content %></pre>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
   </body>
 </html>
