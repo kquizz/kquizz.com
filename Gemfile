@@ -46,7 +46,8 @@ gem "bootsnap", require: false
 
 gem 'activerecord-cockroachdb-adapter'
 
-gem 'sandoz'
+# User Managament
+gem 'sorcery'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

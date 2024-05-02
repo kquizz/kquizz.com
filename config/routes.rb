@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'home/home#index'
+  
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'login' => "user_sessions#create"
+  get 'logout' => 'user_sessions#destroy', :as => :logout
+  post 'logout' => 'user_sessions#destroy'
+
+  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,5 +18,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root 'home/home#index'
 end
