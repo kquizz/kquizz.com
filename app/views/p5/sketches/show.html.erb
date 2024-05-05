@@ -1,0 +1,25 @@
+  <section class="section pb-0">
+  <%= javascript_include_tag 'p5/p5' %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </section>
+  <section class="section pt-4">
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column is-loading is-size-4">
+            <div class="is-loading is-size-4 p5-file has-text-info is-flex justify-content-center align-items-center">
+            <main class="flex-item is-flex justify-content-center align-items-center">
+              <%= javascript_include_tag "p5/#{@p5_file}" %>
+              </main>
+          </div>
+        </div>
+        <div class="column">
+          <div class="p5-file active has-text-danger">
+            <% @p5_files.each_with_index do |file, index| %>
+              <%= link_to file, p5_sketch_path(index) %>
+            <% end %>
+            <pre><%= @p5_file_content %></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

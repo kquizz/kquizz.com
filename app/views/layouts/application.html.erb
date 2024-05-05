@@ -11,15 +11,12 @@
   </head>
 
   <body>
-    <div id="nav">
-      <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
-      <% else %>
-        <%= link_to "Register", new_user_path %> |
-        <%= link_to "Login", :login %>
-      <% end %>
-    </div>
+  <section class="section" style="padding:20px;">
+  <div class="container">
+    <h1 class="title is-4 has-text-centered is-marginless">Kquizz's Portfolio</h1>
+  </div>
+</section>
+  <%= render 'layouts/navbar' %>
     <div>
       <p id="notice"><%= flash[:notice] %></p>
       <p id="alert"><%= flash[:alert] %></p>

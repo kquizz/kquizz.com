@@ -1,0 +1,20 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @p5_files.each_with_index do |file, index| %>
+        <div class="column is-one-third">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">
+                <%= file %>
+              </p>
+            </div>
+            <footer class="card-footer">
+              <%= link_to 'Show', p5_sketch_path(index), class: 'card-footer-item' %>
+            </footer>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
