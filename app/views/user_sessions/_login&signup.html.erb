@@ -1,0 +1,17 @@
+<%= turbo_frame_tag 'login/signup' do %>
+  <% if current_user %>
+    Logged in as <%= current_user.email %>
+    <%= link_to 'Logout', logout_path, method: :post %>
+  <% else %>
+  <section>
+    <div class="columns is-multiline">
+      <div class="column is-full pb-0">
+        <%= link_to 'Login', login_partial_path %>
+      </div>
+      <div class="column is-full pt-0">
+        <%= link_to 'Sign up', signup_partial_path %>
+      </div>
+    </div>
+  </section>
+  <% end %>
+<% end %>

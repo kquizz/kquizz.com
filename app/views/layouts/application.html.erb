@@ -11,17 +11,29 @@
   </head>
 
   <body>
-  <section class="section" style="padding:20px;">
-  <div class="container">
-    <h1 class="title is-4 has-text-centered is-marginless">Kquizz's Portfolio</h1>
-  </div>
-</section>
-  <%= render 'layouts/navbar' %>
-    <div>
-      <p id="notice"><%= flash[:notice] %></p>
-      <p id="alert"><%= flash[:alert] %></p>
-    </div>
-
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-menu">
+        <div class="container mr-0">
+          <div class="columns is-mobile is-variable is-8-desktop">
+            <div class="column is-vcentered">
+              <div>
+                <p id="notice"><%= flash[:notice] %></p>
+                <p id="alert"><%= flash[:alert] %></p>
+              </div>
+            </div>
+            <div class="column pt-5">
+              <div class="">
+                <h1 class="title is-4">Kquizz's Portfolio</h1>
+              </div>
+            </div>
+            <div class="column has-text-right">
+              <%= render 'user_sessions/login&signup' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
-  </body>
-</html>
+    </body>
+  </html>

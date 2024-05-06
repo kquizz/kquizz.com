@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def signup_partial
+    render partial: 'users/form'
+  end
+
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|

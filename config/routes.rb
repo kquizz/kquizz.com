@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   get 'logout' => 'user_sessions#destroy', :as => :logout
   post 'logout' => 'user_sessions#destroy'
+  
+  get 'login_signup' =>'user_sessions#login_signup'
+
+  get 'login_partial' =>'user_sessions#login_partial'
+  get 'signup_partial' => 'user_sessions#signup_partial'
 
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

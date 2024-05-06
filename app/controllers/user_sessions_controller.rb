@@ -12,17 +12,30 @@ class UserSessionsController < ApplicationController
     if @user
       session[:user_id] = @user.id
       flash[:notice] = 'Login successful'
-      redirect_to session.delete(:return_to) || root_path
+      render partial: 'user_sessions/login&signup'
     else
       flash.now[:alert] = 'Login failed'
       render :new
     end
   end
 
+  def login_signup
+    render partial: 'user_sessions/login&signup'
+  end
 
+  
+  def login_partial
+    render partial: 'user_sessions/form'
+  end
+
+  def signup_partial
+    @user = User.new 
+    render partial: 'users/form', locals: { user: @user }
+  end
 
   def destroy
     logout
-    redirect_to(root_path, notice: 'Logged out!')
+    flash[:notice] = 'Login successful'
+    render partial: 'user_sessions/login&signup'
   end
 end

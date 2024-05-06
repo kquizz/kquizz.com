@@ -1,13 +1,16 @@
-<%= form_with url: login_path, method: :post do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Login" %>
-  </div>
+<%= turbo_frame_tag 'login/signup' do %> 
+  <%= form_with url: login_path, method: :post do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </div>
+    <div class="actions pb-1">
+      <%= f.submit "Login", class: 'button is-primary' %>
+      <%= link_to 'Cancel', login_signup_path, class: 'button is-info', data: { turbo_action: 'replace', turbo_frame: 'frame_id' } %>
+    </div>
+  <% end %>
 <% end %>
