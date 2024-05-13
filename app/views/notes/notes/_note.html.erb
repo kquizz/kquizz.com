@@ -1,0 +1,22 @@
+<%= turbo_stream_from note %>
+<%= turbo_frame_tag note do %>
+  <div class="box">
+    <p>
+      <strong>Title:</strong>
+      <%= note.title %>
+    </p>
+
+    <p>
+      <strong>Body:</strong>
+      <%= note.body %>
+    </p>
+   <div class="field is-grouped">
+      <p class="control m-0 p-0">
+        <%= link_to "Edit", notes_edit_path(note), class: "button is-warning" %>
+      </p>
+      <p class="control m-0 p-0">
+        <%= button_to "Delete", notes_destroy_path(note), method: :delete, class: "button is-danger" %>
+      </p>
+    </div> 
+  </div>
+<% end %>

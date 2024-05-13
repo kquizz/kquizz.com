@@ -1,0 +1,9 @@
+<% if notes.none? %>
+  <div class="empty-state empty-state--only-child">
+    <p class="empty-state__text">
+      You don't have any notes yet!
+    </p>
+
+    <%= render partial: 'new', local:{note: Note.new} %>
+  </div>
+<% end %>

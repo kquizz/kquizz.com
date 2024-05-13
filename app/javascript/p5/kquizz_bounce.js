@@ -47,11 +47,17 @@ class ColorController {
 
 let myText;
 
+
 function setup() {
+
+
+
   x_max = windowWidth * .95 * .66;
   y_max = windowHeight * .95 * .66;
 
-  createCanvas(x_max, y_max);
+  var canvas = createCanvas(x_max, y_max);
+  canvas.parent("kquizz_bounce");
+
 
   let colorController = new ColorController([
     [255, 255, 255],

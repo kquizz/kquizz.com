@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend('notes', partial: 'note', locals:{note: @note}) %>
+<%= turbo_stream.replace('new_note', partial: 'new') %>

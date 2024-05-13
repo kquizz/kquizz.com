@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   post 'logout' => 'user_sessions#destroy'
   
   get 'login_signup' =>'user_sessions#login_signup'
-
   get 'login_partial' =>'user_sessions#login_partial'
   get 'signup_partial' => 'user_sessions#signup_partial'
 
@@ -22,7 +21,18 @@ namespace :p5 do
   resources :sketches, only: [:show, :index]
 end
 
-  get '/p5', to: 'p5#index'
+scope path: '/notes', controller: 'notes/notes', as: 'notes' do
+  get '/', action: 'index'
+  # get '/:id', action: 'show', as: 'note'
+  post '/', action: 'create'
+  patch '/:id', action: 'update', as: 'update'
+  get 'new', action: 'new'
+  get ':id/edit', action: 'edit', as: 'edit'
+  put ':id', action: 'update'
+  delete ':id', action: 'destroy', as: 'destroy'
+end
+
+  # get '/p5', to: 'p5#index'
   get 'p5/update', to: 'p5#update', as: 'update_p5'
 
   # Defines the root path route ("/")

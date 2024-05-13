@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'new_note' do %>
+  <%= link_to "New Note" , notes_new_path, class: "button is-primary" , data: { turbo_frame: dom_id(Note.new) } %>
+<% end %>

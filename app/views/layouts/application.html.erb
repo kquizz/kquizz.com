@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Kquizz Portfolio</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
+
+<head>
+  <title>Kquizz Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <%= javascript_importmap_tags %>
-  </head>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+      <%= javascript_importmap_tags %>
+        <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+</head>
 
-  <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-menu">
-        <div class="container mr-0">
-          <div class="columns is-mobile is-variable is-8-desktop">
-            <div class="column is-vcentered">
-              <div>
-                <p id="notice"><%= flash[:notice] %></p>
-                <p id="alert"><%= flash[:alert] %></p>
-              </div>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu">
+      <div class="container mr-0">
+        <div class="columns is-mobile is-variable is-8-desktop">
+          <div class="column is-vcentered">
+            <div>
+              <p id="notice">
+                <%= flash[:notice] %>
+              </p>
+              <p id="alert">
+                <%= flash[:alert] %>
+              </p>
             </div>
-            <div class="column pt-5">
-              <div class="">
-                <h1 class="title is-4">Kquizz's Portfolio</h1>
-              </div>
+          </div>
+          <div class="column pt-5">
+            <div class="">
+              <h1 class="title is-4">Kquizz's Portfolio</h1>
             </div>
-            <div class="column has-text-right">
-              <%= render 'user_sessions/login&signup' %>
-            </div>
+          </div>
+          <div class="column has-text-right">
+            <%= render 'user_sessions/login&signup' %>
           </div>
         </div>
       </div>
-    </nav>
-    <%= render 'layouts/navbar' %>
+    </div>
+  </nav>
+  <%= render 'layouts/navbar' %>
     <%= yield %>
-    </body>
-  </html>
+</body>
+
+</html>
