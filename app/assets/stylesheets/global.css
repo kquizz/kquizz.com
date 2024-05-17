@@ -19,3 +19,11 @@
     }
   }
 }
+
+.navbar-item a {
+  color: var(--bulma-link-text) !important;
+}
+
+.dark-link a {
+  color: var(--bulma-link-text) !important;
+}

@@ -49,24 +49,21 @@ let myText;
 
 
 function setup() {
-
-
-
-  x_max = windowWidth * .95 * .66;
-  y_max = windowHeight * .95 * .66;
+  x_max = windowWidth;
+  y_max = windowHeight * .7;
 
   var canvas = createCanvas(x_max, y_max);
   canvas.parent("kquizz_bounce");
 
 
   let colorController = new ColorController([
-    [255, 255, 255],
-    [255, 255, 0],
-    [255, 0, 255],
-    [255, 0, 0],
-    [0, 255, 255],
-    [0, 255, 0],
-    [0, 0, 255]]);
+    [0, 19, 164],
+    [0, 167, 142],
+    [0, 100, 143],
+    [46, 149, 114],
+    [146, 102, 0],
+    [143, 0, 29],
+    [0, 167, 142]]);
 
   myText = new Text(50, 50, 2, "kquizz", colorController);
 

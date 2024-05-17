@@ -1,46 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Kquizz Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-      <%= javascript_importmap_tags %>
-        <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <%= javascript_importmap_tags %>
+  <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
 </head>
-
 <body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-menu">
-      <div class="container mr-0">
-        <div class="columns is-mobile is-variable is-8-desktop">
-          <div class="column is-vcentered">
-            <div>
-              <p id="notice">
-                <%= flash[:notice] %>
-              </p>
-              <p id="alert">
-                <%= flash[:alert] %>
-              </p>
-            </div>
-          </div>
-          <div class="column pt-5">
-            <div class="">
-              <h1 class="title is-4">Kquizz's Portfolio</h1>
-            </div>
-          </div>
-          <div class="column has-text-right">
-            <%= render 'user_sessions/login&signup' %>
-          </div>
-        </div>
-      </div>
+  <header class="header">
+    <div class="container">
+      <h1 class="title is-4 has-text-centered mt-4">Kquizz's Portfolio</h1>
     </div>
-  </nav>
-  <%= render 'layouts/navbar' %>
-    <%= yield %>
+    <nav class="navbar is-primary mt-2" role="navigation" aria-label="main navigation">
+      <%= render 'layouts/navbar' %>
+    </nav>
+  </header>
+  <%= yield %>
 </body>
-
 </html>

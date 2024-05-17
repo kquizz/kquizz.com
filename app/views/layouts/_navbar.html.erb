@@ -1,46 +1,36 @@
-<!DOCTYPE html>
-<html>
+<div class="navbar-brand">
+  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+</div>
 
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-</head>
-
-<body>
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <%= link_to 'Home' , root_path, data: {turbo_action: 'replace' , turbo_frame: 'main_page' },
-            class:"navbar-item" %>
-            <%=link_to 'p5 Sketches' , p5_sketches_path, data: {turbo_action: 'replace' , turbo_frame: 'main_page' },
-              class:"navbar-item" %>
-              <%= link_to 'Notes' , notes_path, data: {turbo_actoin: 'replace' , turbo_frame: 'main_page' },
-                class: "navbar-item" %>
-                <%= link_to 'Github Profile' , "https://github.com/kquizz" , class:"navbar-item" %>
-                  <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" href="#">
-                      More
-                    </a>
-
-                    <div class="navbar-dropdown">
-                      <a class="navbar-item" href="#">
-                        About
-                      </a>
-                      <a class="navbar-item" href="#">
-                        Jobs
-                      </a>
-                      <a class="navbar-item" href="#">
-                        Contact
-                      </a>
-                      <hr class="navbar-divider">
-                      <a class="navbar-item" href="#">
-                        Report an issue
-                      </a>
-                    </div>
-                  </div>
-        </div>
-      </div>
-  </nav>
-</body>
-
-</html>
+<div id="navbarBasicExample" class="navbar-menu">
+  <div class="navbar-start">
+    <%= link_to 'Home', root_path, data: { turbo_action: 'replace', turbo_frame: 'main_page' }, class: 'navbar-item' %>
+    <%= link_to 'p5 Sketches', p5_sketches_path, data: { turbo_action: 'replace', turbo_frame: 'main_page' }, class: 'navbar-item' %>
+    <%= link_to 'Notes', notes_path, data: { turbo_action: 'replace', turbo_frame: 'main_page' }, class: 'navbar-item' %>
+    <%= link_to 'Github Profile', 'https://github.com/kquizz', class: 'navbar-item' %>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item dark-link">
+      <%= render 'user_sessions/login&signup' %>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    if ($navbarBurgers.length > 0) {
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    }
+  });
+</script>
